@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="icon" href="file://C:/Users/HP/Desktop/login%20and%20registration/img/logo.png">
+    <title>About Us</title>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar .logo span {
+            color: #007bff;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 45px;
+
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .navbar ul li a:hover {
+            color: #007bff;
+        }
+
+        .navbar .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .navbar .toggle-switch {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .toggle-switch input {
+            display: none;
+        }
+
+        .navbar .toggle-switch label {
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .navbar .toggle-switch label::after {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            transition: 0.3s;
+        }
+
+        .navbar .toggle-switch input:checked+label::after {
+            left: 21px;
+            background-color: #007bff;
+        }
+
+        .team-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            width: calc(33.333% - 40px);
+            margin: 10px;
+            vertical-align: top;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img-top {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            width: 100%;
+            height: auto;
+        }
+
+        .social-row {
+            margin-top: 10px;
+        }
+
+        .soc-item {
+            margin: 0 10px;
+            color: #343a40;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .soc-item:hover {
+            color: #007bff;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #1976D2;
+            padding: 40px 100px;
+            color: white;
+
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            flex: 1;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            background-color: #fff;
+        }
+
+        .footer-links {
+            flex: 2;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin: 0 15px;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-links ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .footer-social p {
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .footer-social a {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .footer-social img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        #contact {
+            display: inline-block;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+        @media (max-width: 600px) {
+
+.footer-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links ul {
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-social {
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+        @media (max-width: 900px) {
+            .card {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+            }
+
+            .navbar .menu-icon.active+ul {
+                display: flex;
+            }
+
+            footer {
+        padding: 30px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links ul li {
+        margin: 10px 0;
+    }
+
+    .footer-social {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 900px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-links ul {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-social {
+        justify-content: flex-start;
+    }
+
+    .footer-social p {
+        margin-right: 10px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Skill<span>Swap</span></div>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="signin.html">Login</a></li>
+            <li><a href="signup.html">Signup</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+    <section class="team-section">
+        <h3 class="display-4"><strong>Our Team</strong></h3>
+        <p class="lead">Meet the dedicated individuals behind our success.</p>
+
+        <div class="team-cards">
+            <div class="card">
+                <img src="image/images/woman2.jpeg" class="card-img-top" alt="Anusha">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Anusha</strong></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><strong>Front-end Developer</strong></h6>
+                    <div class="social-row">
+                        <a href="https://www.facebook.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="image/images/woman4.jpeg" class="card-img-top" alt="Deepthi">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Deepthi</strong></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><strong>Front-end Developer</strong></h6>
+                    <div class="social-row">
+                        <a href="https://www.facebook.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="image/images/woman3.jpeg" class="card-img-top" alt="Keerthana">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Keerthana</strong></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><strong>Front-end Developer</strong></h6>
+                    <div class="social-row">
+                        <a href="https://www.facebook.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/YourProfile" target="_blank" class="soc-item"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Skill Swap Network logo" class="logo">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="signin.html">Login</a></li>
+                    <li><a href="signup.html">Sign-up</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#" id="contact">Contact Us:+91 9178528212</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-social">
+                <p>Follow us:</p>
+                <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="images/github.png" alt="GitHub"></a>
+                <a href="#"><img src="images/envelope.png" alt="Email"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Skill Swap Network. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navLinks = document.querySelector('.navbar ul');
+            menuIcon.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+
+
+
+    </script>
+</body>
+
+</html>

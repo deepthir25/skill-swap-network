@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="icon" href="file://C:/Users/HP/Desktop/login%20and%20registration/img/logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar .logo span {
+            color: #007bff;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 45px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .navbar ul li a:hover {
+            color: #007bff;
+        }
+
+        .navbar .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .nav a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .nav .discover {
+            color: #007BFF;
+            border-color: #007BFF;
+        }
+
+        .nav .post-skill {
+            color: #28a745;
+            border-color: #28a745;
+        }
+
+        .nav .post-need {
+            color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .content {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        .content .form-group {
+            margin: 20px 0;
+        }
+
+        .content .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #007BFF;
+        }
+
+        .content .form-group input,
+        .content .form-group select,
+        .content .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .content .form-group .upload-btn {
+            color: #007BFF;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .content .form-group .upload-btn:hover {
+            background-color: #f2f2f2;
+        }
+
+        .content .form-group .buttons {
+            text-align: center;
+        }
+
+        .content .form-group .buttons button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .content .form-group .buttons .cancel {
+            color: #dc3545;
+        }
+
+        .content .form-group .buttons .save-draft {
+            color: #ffc107;
+        }
+
+        .content .form-group .buttons .publish {
+            color: #28a745;
+        }
+
+        .content .form-group .buttons .post {
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 50px;
+            cursor: pointer;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            width: 30%;
+            margin-left: 35%;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .card .category {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card .description {
+            margin-top: 10px;
+        }
+
+        .card .user-info {
+            margin-top: 10px;
+        }
+
+        .card .rating {
+            color: #ccc;
+        }
+
+        footer {
+            background-color: #1976D2;
+            padding: 40px 100px;
+            color: white;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            flex: 1;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            background-color: #fff;
+            padding: 5px;
+
+        }
+
+        .footer-links {
+            flex: 2;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin: 0 15px;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-links ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .footer-social p {
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .footer-social a {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .footer-social img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .success-message {
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .post {
+            margin-left: 45%;
+            background-color: #007BFF;
+            border-radius: 10px;
+            width: 150px;
+            height: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            #user-email {
+                display: none;
+            }
+
+            footer {
+                padding: 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-logo img {
+                width: 60px;
+            }
+
+            .footer-links ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links ul li {
+                margin: 10px 0;
+            }
+
+            .footer-social {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-social p {
+                margin-bottom: 10px;
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .header .language {
+                position: static;
+                margin-top: 10px;
+            }
+
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .content {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            .content .form-group {
+                margin: 10px 0;
+            }
+
+            .content .form-group .buttons button {
+                display: block;
+                margin: 10px auto;
+            }
+
+            .container {
+                flex-direction: row;
+            }
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+            }
+
+            .navbar .menu-icon.active+ul {
+                display: flex;
+            }
+
+            footer {
+                padding: 30px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links ul li {
+                margin: 10px 0;
+            }
+
+            .footer-social {
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 20px;
+            }
+        }
+
+
+        @media (min-width: 900px) {
+            footer {
+                padding: 40px 100px;
+            }
+
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer-links ul {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .footer-social {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+            .footer-social p {
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Skill<span>Swap</span></div>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="discovery.html">Discover</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>
+            My post is
+        </h2>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" required>
+        </div>
+        <div class="form-group">
+            <label for="post-type">Post Type</label>
+            <select id="post-type">
+                <option value="skill">Skill</option>
+                <option value="need">Need</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category">
+                <option value="outdoor/indoor games">Outdoor/Indoor Games</option>
+                <option value="cooking">Cooking</option>
+                <option value="languages">Languages</option>
+                <option value="consulting">Consulting</option>
+                <option value="art">Art</option>
+                <option value="creativity">Creativity</option>
+                <option value="diy">DIY</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="music">Music</option>
+                <option value="computer/IT">Computer/IT</option>
+                <option value="education">Education</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="upload-picture">Upload picture</label>
+            <input accept="image/*" class="upload-btn" id="upload-picture" type="file" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Description skill"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="details">Details</label>
+            <textarea id="details" placeholder="Skill details"></textarea>
+        </div>
+        <div class="form-group">
+            <h2>
+                This is how your post will look like on the listings page
+            </h2>
+            <div class="card">
+                <img alt="Default Skill Image" height="200" id="skill-image" src="images/logo.png" width="300" />
+                <div class="category" id="skill-category">Category Name</div>
+                <div class="description" id="skill-description">Description of the skill</div>
+                <div class="user-info">
+                    <p id="user-name">Your Name</p>
+                    <p id="user-email">your.email@example.com</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group buttons">
+            <button class="post" id="post-btn">Post</button>
+        </div>
+        <div class="success-message" id="success-message">
+            Post submitted successfully!
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Skill Swap Network logo" class="logo">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="signin.html">Login</a></li>
+                    <li><a href="signup.html">Sign-up</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#" id="contact">Contact Us:+91 9178528212</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-social">
+                <p>Follow us:</p>
+                <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="images/github.png" alt="GitHub"></a>
+                <a href="#"><img src="images/envelope.png" alt="Email"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Skill Swap Network. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('upload-picture').addEventListener('change', function (event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('skill-image').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        document.getElementById('category').addEventListener('change', function () {
+            document.getElementById('skill-category').innerText = this.options[this.selectedIndex].text;
+        });
+
+        document.getElementById('description').addEventListener('input', function () {
+            document.getElementById('skill-description').innerText = this.value;
+        });
+
+        document.getElementById('name').addEventListener('input', function () {
+            document.getElementById('user-name').innerText = this.value;
+        });
+
+        document.getElementById('email').addEventListener('input', function () {
+            document.getElementById('user-email').innerText = this.value;
+        });
+
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        document.getElementById('post-btn').addEventListener('click', function () {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const postType = document.getElementById('post-type').value;
+            const category = document.getElementById('category').value;
+            const description = document.getElementById('description').value;
+            const details = document.getElementById('details').value;
+            const picture = document.getElementById('skill-image').src;
+
+
+            if (!isValidEmail(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+
+            if (!name || !email || !postType || !category || !description || !details || !picture) {
+                alert("Please fill out all fields.");
+            } else {
+
+                const postData = {
+                    name,
+                    email,
+                    postType,
+                    category,
+                    description,
+                    details,
+                    picture
+                };
+                localStorage.setItem('skillSwapPost', JSON.stringify(postData));
+
+
+                alert("Post submitted successfully!");
+
+
+
+            }
+        });
+
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navLinks = document.querySelector('.navbar ul');
+            menuIcon.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+    </script>

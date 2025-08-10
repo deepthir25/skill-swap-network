@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap|home</title>
+    <link rel="icon" href="img/imgs/logo.png">
+    <link rel="stylesheet" href="style.css" >
+   
+
+   
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Skill<span>Swap</span></div>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="signup.html">Sign-up</a></li>
+            <li><a href="signin.html">Sign-in</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+        <section class="content">
+            <div class="textbox">
+                <h2>SKILL SWAP <span>NETWORK</span> </h2>
+                <p>The skill swap hub is an innovative and transformative solution aimed at revolutionizing the way
+                    students learn and support one another. The skill swap hub addresses this gap by providing a
+                    tailored platform
+                    that intelligently matches students based on their individual proficiency levels and strengths.
+                </p>
+                <br>
+                <p>The Skill Swap Hub fosters a collaborative learning environment where students can both teach and
+                    learn from one another, creating a more dynamic and personalized educational experience. By
+                    enabling
+                    students to share their unique skills, the platform not only strengthens academic support but
+                    also
+                    encourages the development of interpersonal and communication skills. </p>
+                <a href="signup.html">Get Started</a>
+            </div>
+            <div class="imgbox">
+                <img src="images/studying.png" alt="Students Studying" class="image">
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Skill Swap Network logo" class="logo">
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="signin.html">Login</a></li>
+                        <li><a href="signup.html">Sign-up</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#" id="contact">Contact Us:+91 9178528212</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <p>Follow us:</p>
+                    <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="images/github.png" alt="GitHub"></a>
+                    <a href="#"><img src="images/envelope.png" alt="Email"></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Skill Swap Network. All Rights Reserved.</p>
+            </div>
+        </footer>
+        <script>
+            function toggleMenu() {
+                const menuIcon = document.querySelector('.menu-icon');
+                const navLinks = document.querySelector('.navbar ul');
+                menuIcon.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            }
+        </script>
+</body>
+
+</html>

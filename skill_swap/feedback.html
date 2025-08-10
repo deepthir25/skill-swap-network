@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap|feedback</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="file://C:/Users/HP/Desktop/login%20and%20registration/img/logo.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #feedback-form {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            ;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        h2 {
+
+
+            margin-top: 30px;
+        }
+
+        .error-message {
+
+            color: red;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+
+        }
+
+        @media(max-width:900px) {
+            #feedback-form {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="navbar">
+            <div class="logo">Skill<span>Swap</span></div>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+
+
+        <h2 style="text-align: center;">Course Feedback Form</h2>
+
+        <div id="feedback-form">
+
+
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <span class="error-message" id="name-error"></span>
+
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <span class="error-message" id="email-error"></span>
+
+            <label for="rating">Rating (1-5):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required><br><br>
+            <span class="error-message" id="rating-error"></span>
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback"></textarea><br><br>
+            <span class="error-message" id="feedback-error"></span>
+
+            <input type="submit" value="Submit Feedback" onclick="submitFeedback()">
+        </div>
+
+
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Skill Swap Network logo" class="logo">
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="signin.html">Login</a></li>
+                        <li><a href="signup.html">Sign-up</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#" id="contact">Contact Us:+91 9178528212</a></li>
+
+
+
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <p>Follow us:</p>
+                    <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="images/github.png" alt="GitHub"></a>
+                    <a href="#"><img src="images/envelope.png" alt="Email"></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Skill Swap Network. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            function toggleMenu() {
+                const menuIcon = document.querySelector('.menu-icon');
+                const navLinks = document.querySelector('.navbar ul');
+                menuIcon.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            }
+            function submitFeedback() {
+                const name = document.getElementById('name').value;
+                const rating = document.getElementById('rating').value;
+                const email = document.getElementById('email').value;
+                const feedback = document.getElementById('feedback').value;
+
+
+                document.getElementById('name-error').innerHTML = '';
+                document.getElementById('rating-error').innerHTML = '';
+                document.getElementById('email-error').innerHTML = '';
+                document.getElementById('feedback-error').innerHTML = '';
+
+
+                if (name === '') {
+                    document.getElementById('name-error').innerHTML = 'Please enter your name';
+                    return;
+                }
+
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById('email-error').innerHTML = 'incorrect email';
+                    return;
+                }
+
+                const ratingReg = /^[1-5]$/;
+                if (rating === '' || !ratingReg.test(rating)) {
+                    document.getElementById('rating-error').innerHTML = 'Please enter a valid rating';
+                    return;
+                }
+
+                if (feedback === '') {
+                    document.getElementById('feedback-error').innerHTML = 'Please enter your feedback';
+                    return;
+                }
+
+
+                alert('feedback submitted sucessfully');
+                window.location.href = "discovery.html";
+            }
+        </script>
+    </body>
+
+</html>

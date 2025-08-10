@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover | SkillSwap</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="file://C:/Users/HP/Desktop/login%20and%20registration/img/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar .logo span {
+            color: #007bff;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 45px;
+
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .navbar ul li a:hover {
+            color: #007bff;
+        }
+
+        .navbar .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            margin: 0 5px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .listings {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .listing {
+            background-color: white;
+            width: 300px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .listing:hover {
+            transform: scale(1.05);
+        }
+
+        .listing img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .listing .details {
+            padding: 10px;
+        }
+
+        .listing .details h3 {
+            margin: 0;
+            color: #007bff;
+        }
+
+        .listing .details p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .listing .details .location {
+            color: #999;
+        }
+
+        .listing .details .rating {
+            color: #ff4500;
+        }
+
+        .listing .details .rating i {
+            margin-right: 5px;
+        }
+
+        .no-match {
+            display: none;
+            text-align: center;
+            color: #ff4500;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #1976D2;
+            padding: 40px 100px;
+            color: white;
+
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            flex: 1;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            background-color: #fff;
+        }
+
+        .footer-links {
+            flex: 2;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin: 0 15px;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-links ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .footer-social p {
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .footer-social a {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .footer-social img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        #contact {
+            display: inline-block;
+        }
+        @media (max-width: 480px) {
+    
+    footer {
+        padding: 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo img {
+        width: 60px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links ul li {
+        margin: 10px 0;
+    }
+
+    .footer-social {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-social p {
+        margin: 0 0 10px;
+        text-align: center;
+    }
+}
+@media (max-width: 600px) {
+
+.footer-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links ul {
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-social {
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+        @media (min-width: 767px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+            }
+
+            .navbar .menu-icon.active+ul {
+                display: flex;
+            }
+
+            .imgbox {
+                display: none;
+            }
+
+            footer {
+        padding: 30px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links ul li {
+        margin: 10px 0;
+    }
+
+    .footer-social {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+        a:visited {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header .language,
+            .header .auth {
+                margin-top: 10px;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .search-bar {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-bar input[type="text"],
+            .search-bar button {
+                width: 80%;
+                margin: 5px 0;
+            }
+
+            .listings {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media (min-width: 900px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-links ul {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-social {
+        justify-content: flex-start;
+    }
+
+    .footer-social p {
+        margin-right: 10px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Skill<span>Swap</span></div>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./post.html">Post</a></li>
+
+
+        </ul>
+
+    </div>
+    <div class="search-bar">
+        <input id="searchInput" placeholder="Titles, description" type="text" />
+        <button onclick="filterCourses()">Search</button>
+    </div>
+    <div class="listings" id="courseList">
+
+        <div class="listing" data-title="Portugiesisch lernen" data-description="Cooking"
+            onclick="showCourseDetails('Portugiesisch lernen', 'Cooking', 'Mali', 'https://storage.googleapis.com/a1aa/image/1ZyXqgEi2xpsJVLb4sziqDsNmbZrjGCoYcld0566gKMCPv4E.jpg', 'Learn to cook Portuguese dishes', '3 months','https://www.youtube.com/watch?v=R3k1Z0oKHIQ')">
+            <img alt="Cooking Class"
+                src="https://storage.googleapis.com/a1aa/image/1ZyXqgEi2xpsJVLb4sziqDsNmbZrjGCoYcld0566gKMCPv4E.jpg" />
+            <div class="details">
+                <h3>Portugiesisch lernen</h3>
+                <p>Cooking</p>
+                <p class="location">Mali</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Academic, Creative and Homemaking skills" data-description="Education"
+            onclick="showCourseDetails('Academic, Creative and Homemaking skills', 'Education', 'Melissa', 'https://storage.googleapis.com/a1aa/image/GIcgZOdOB4pYKF3NtaddBqaEef0YrmOtNYLrnCU1SAuM88iTA.jpg', 'Enhance your academic, creative, and homemaking skills', '6 months','https://www.youtube.com/watch?v=w9VyniozFOM')">
+            <img alt="Education Class"
+                src="https://storage.googleapis.com/a1aa/image/GIcgZOdOB4pYKF3NtaddBqaEef0YrmOtNYLrnCU1SAuM88iTA.jpg" />
+            <div class="details">
+                <h3>Academic, Creative and Homemaking skills</h3>
+                <p>Education</p>
+                <p class="location">Melissa</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Adobe Tutoring" data-description="Art/Creativity"
+            onclick="showCourseDetails('Adobe Tutoring', 'Art/Creativity', 'Melissa', 'https://storage.googleapis.com/a1aa/image/ztUEWkPXykrOGx86CJ34DxfkKW5FHnSjeFJkEGS1Qi8E88iTA.jpg', 'Master Adobe software for creative projects', '4 months','https://www.youtube.com/watch?v=b7ZC01afWPw')">
+            <img alt="Adobe Tutoring"
+                src="https://storage.googleapis.com/a1aa/image/ztUEWkPXykrOGx86CJ34DxfkKW5FHnSjeFJkEGS1Qi8E88iTA.jpg" />
+            <div class="details">
+                <h3>Adobe Tutoring</h3>
+                <p>Art/Creativity</p>
+                <p class="location">Melissa</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Dance Classes" data-description="Entertainment"
+            onclick="showCourseDetails('Dance Classes', 'Entertainment', 'New York', 'https://storage.googleapis.com/a1aa/image/0kSNQ6iNgdLiCRKhZAIFn69f8vGclZJeN1SdUJ1CegxL45FnA.jpg', 'Learn various dance styles', '2 months','https://www.youtube.com/watch?v=bU8_9VCoVeI&list=PLtore2W-GT9i5eFnX6dGDYrau_NGpiLxF')">
+            <img alt="Dance Classes"
+                src="https://storage.googleapis.com/a1aa/image/0kSNQ6iNgdLiCRKhZAIFn69f8vGclZJeN1SdUJ1CegxL45FnA.jpg" />
+            <div class="details">
+                <h3>Dance Classes</h3>
+                <p>Entertainment</p>
+                <p class="location">New York</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Singing Lessons" data-description="Music"
+            onclick="showCourseDetails('Singing Lessons', 'Music', 'Los Angeles', 'https://storage.googleapis.com/a1aa/image/1a0D8aAHf622Qi7z0fe32EeDrDqjNMjMa4hiw0tn5alehnXcC.jpg', 'Improve your singing skills', '3 months','https://www.youtube.com/watch?v=_Y5SNjo6OGs')">
+            <img alt="Singing Lessons"
+                src="https://storage.googleapis.com/a1aa/image/1a0D8aAHf622Qi7z0fe32EeDrDqjNMjMa4hiw0tn5alehnXcC.jpg" />
+            <div class="details">
+                <h3>Singing Lessons</h3>
+                <p>Music</p>
+                <p class="location">Los Angeles</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Coding Bootcamp" data-description="Technology"
+            onclick="showCourseDetails('Coding Bootcamp', 'Technology', 'San Francisco', 'https://storage.googleapis.com/a1aa/image/PGpnsTeim5QYJCe78TMcn9V1GbhLjtKgGPlj5WGehzxP45FnA.jpg', 'Become a proficient coder', '6 months','https://www.youtube.com/watch?v=HqzWCNbX_wg&list=PLpcSpRrAaOargYaCNYxZCiFIp9YTqEl-l')">
+            <img alt="Coding Bootcamp"
+                src="https://storage.googleapis.com/a1aa/image/PGpnsTeim5QYJCe78TMcn9V1GbhLjtKgGPlj5WGehzxP45FnA.jpg" />
+            <div class="details">
+                <h3>Coding Bootcamp</h3>
+                <p>Technology</p>
+                <p class="location">San Francisco</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Photography Workshop" data-description="Art"
+            onclick="showCourseDetails('Photography Workshop', 'Art', 'Chicago', 'https://storage.googleapis.com/a1aa/image/BHZ68Spf1c0cDqiW29hyNq5fN7VEFA2u1fJNTwskmw6W45FnA.jpg', 'Learn the art of photography', '4 months','https://www.youtube.com/watch?v=hVuTuib65WM')">
+            <img alt="Photography Workshop"
+                src="https://storage.googleapis.com/a1aa/image/BHZ68Spf1c0cDqiW29hyNq5fN7VEFA2u1fJNTwskmw6W45FnA.jpg" />
+            <div class="details">
+                <h3>Photography Workshop</h3>
+                <p>Art</p>
+                <p class="location">Chicago</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Yoga Classes" data-description="Health"
+            onclick="showCourseDetails('Yoga Classes', 'Health', 'Miami', 'https://storage.googleapis.com/a1aa/image/Q6mmVJe3DyVOWyxzn23hkwVyFk5X6GgtfZTD8iSefe7yhnXcC.jpg', 'Improve your flexibility and strength', '2 months','https://www.youtube.com/watch?v=ybgqdffxrQE')">
+            <img alt="Yoga Classes"
+                src="https://storage.googleapis.com/a1aa/image/Q6mmVJe3DyVOWyxzn23hkwVyFk5X6GgtfZTD8iSefe7yhnXcC.jpg" />
+            <div class="details">
+                <h3>Yoga Classes</h3>
+                <p>Health</p>
+                <p class="location">Miami</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Cooking Masterclass" data-description="Cooking"
+            onclick="showCourseDetails('Cooking Masterclass', 'Cooking', 'Paris', 'https://storage.googleapis.com/a1aa/image/IR41XQfQ3R1COCUufSvhrFXSKExwCFRDCAbfGmvlxIRH45FnA.jpg', 'Master the art of cooking', '5 months','https://www.youtube.com/watch?v=6LDswBUN21o')">
+            <img alt="Cooking Masterclass"
+                src="https://storage.googleapis.com/a1aa/image/IR41XQfQ3R1COCUufSvhrFXSKExwCFRDCAbfGmvlxIRH45FnA.jpg" />
+            <div class="details">
+                <h3>Cooking Masterclass</h3>
+                <p>Cooking</p>
+                <p class="location">Paris</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </p>
+            </div>
+        </div>
+        <div class="listing" data-title="Digital Marketing" data-description="Business"
+            onclick="showCourseDetails('Digital Marketing', 'Business', 'London', 'https://storage.googleapis.com/a1aa/image/ulJsU6LeGEQQOSstWCr8i1NKNi7GoI4Nfe0E5E0EQAfowzLOB.jpg', 'Learn digital marketing strategies', '3 months','https://www.youtube.com/watch?v=bixR-KIJKYM')">
+            <img alt="Digital Marketing"
+                src="https://storage.googleapis.com/a1aa/image/ulJsU6LeGEQQOSstWCr8i1NKNi7GoI4Nfe0E5E0EQAfowzLOB.jpg" />
+            <div class="details">
+                <h3>Digital Marketing</h3>
+                <p>Business</p>
+                <p class="location">London</p>
+                <p class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="no-match" id="noMatch">No match found</div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Skill Swap Network logo" class="logo">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="signin.html">Login</a></li>
+                    <li><a href="signup.html">Sign-up</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#" id="contact">Contact Us:+91 9178528212</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-social">
+                <p>Follow us:</p>
+                <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="images/github.png" alt="GitHub"></a>
+                <a href="#"><img src="images/envelope.png" alt="Email"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Skill Swap Network. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function filterCourses() {
+            var input = document.getElementById('searchInput').value.toLowerCase();
+            var listings = document.getElementsByClassName('listing');
+            var noMatch = document.getElementById('noMatch');
+            var matchFound = false;
+
+            for (var i = 0; i < listings.length; i++) {
+                var title = listings[i].getAttribute('data-title').toLowerCase();
+                var description = listings[i].getAttribute('data-description').toLowerCase();
+
+                if (title.includes(input) || description.includes(input)) {
+                    listings[i].style.display = 'block';
+                    matchFound = true;
+                } else {
+                    listings[i].style.display = 'none';
+                }
+            }
+
+            if (!matchFound) {
+                noMatch.style.display = 'block';
+            } else {
+                noMatch.style.display = 'none';
+            }
+        }
+
+        function showCourseDetails(title, description, location, imageUrl, benefits, duration, link) {
+            var courseDetails = `
+             <div class="navbar">
+        <div class="logo">Skill<span>Swap</span></div>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="post.html">Post</a></li>
+
+
+        </ul>
+
+    </div>
+               
+                    <h1 style="text-align:center; margin:20px;color:black;">${title}</h1>
+					 <div class="course-details" style="display:flex;flex-wrap:wrap;">
+					
+                    <img src="${imageUrl}" class="img2" alt="${title}" style="width: 40%; height: 100%; margin:auto;margin-top:30px;">
+					
+					<div style="margin-left:10%; background-color:lightgray; padding:100px; padding-bottom:50px; margin:auto;margin-top:30px;max-width:450px;">
+                    <p><strong>Description:</strong> ${description}</p><br>
+                    <p><strong>Location:</strong> ${location}</p><br>
+                    <p><strong>Benefits:</strong> ${benefits}</p><br>
+                    <p><strong>Duration:</strong> ${duration}</p><br>
+                    <p><strong>Link: </strong><a href="${link}" style="text-decoration:none;}">https://www.youtube.com</a></p>
+					<button onclick="goBack()" style="cursor:pointer;margin-top:10px;background-color:#007bff;color:white;padding:5px;border-radius:3px;border:none">Go Back</button>
+					 <br><br><br><br><br><br><p style=""><strong>Already completed the course? </strong> </p><br>
+                     <p> </strong><a href="feedback.html" style="text-decoration:none;text-align:center;">Your Feedback</a></p>
+                    </div>
+                </div>
+
+
+                    <footer style="margin-top:30px;">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Skill Swap Network logo" class="logo">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="signin.html">Login</a></li>
+                    <li><a href="signup.html">Sign-up</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#"id="contact">Contact Us:+91 9178528212</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <p>Follow us:</p>
+                <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                <a href="#"><img src="images/github.png" alt="GitHub"></a>
+                <a href="#"><img src="images/envelope.png" alt="Email"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Skill Swap Network. All Rights Reserved.</p>
+        </div>
+    </footer>
+				 
+            `;
+            document.body.innerHTML = courseDetails;
+        }
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navLinks = document.querySelector('.navbar ul');
+            menuIcon.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+        function goBack() {
+            window.location.reload();
+        }
+    </script>
+</body>
+
+</html>
